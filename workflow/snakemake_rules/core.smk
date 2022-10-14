@@ -85,7 +85,6 @@ rule filter:
     input:
         sequences=rules.exclude_bad.output.sequences,
         metadata=rules.exclude_bad.output.metadata,
-        include=rules.include_A_strains.output.include_strains,
     output:
         sequences=build_dir + "/{build_name}/filtered.fasta",
         metadata=build_dir + "/{build_name}/metadata.tsv",
@@ -99,7 +98,6 @@ rule filter:
         augur filter \
             --sequences {input.sequences} \
             --metadata {input.metadata} \
-            --include {input.include} \
             --output-sequences {output.sequences} \
             --output-metadata {output.metadata} \
             {params.group_by} \

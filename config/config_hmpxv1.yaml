@@ -16,11 +16,11 @@ build_name: "hmpxv1"
 auspice_name: "monkeypox_hmpxv1"
 
 ## filter
-min_date: 2017
+min_date: 2022
 min_length: 100000
 sequences_per_group: "--sequences-per-group 40"
 group_by: "--group-by year month country"
-filters: "--exclude-where outbreak!=hMPXV-1"
+filters: "--exclude-where outbreak!=hMPXV-1 lineage=A lineage=A.1 lineage=A.1.1 lineage=A.2 lineage=A.2.1 lineage=A.2.2 --exclude-ambiguous-dates-by month --include-where accession=MK783032 accession=MK783030 strain_original=MK783032 strain_original=MK783030"
 
 ## align
 max_indel: 10000
