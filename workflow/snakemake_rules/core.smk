@@ -69,7 +69,7 @@ rule include_A_strains:
     shell:
         """
         tsv-filter -H \
-            --str-in-fld lineage:'A'\
+            --str-in-fld lineage:'B'\
             {input.metadata} \
         | tsv-select -f 1 \
         > {output.include_strains}
