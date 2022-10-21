@@ -80,7 +80,7 @@ rule filter:
     message:
         """
         Filtering to
-          - {params.sequences_per_group} sequence(s) per {params.group_by!s}
+          - sequences per group sequence(s) per {params.group_by!s}
         """
     input:
         sequences=rules.exclude_bad.output.sequences,
@@ -91,7 +91,8 @@ rule filter:
         log=build_dir + "/{build_name}/filter.log",
     params:
         group_by=config.get("group_by", "--group-by clade lineage"),
-        sequences_per_group=config["sequences_per_group"],
+        subsample_max_sequences=config["subsample_max_sequences"],
+        #sequences_per_group=config["sequences_per_group"],
         other_filters=config.get("filters", ""),
     shell:
         """
@@ -101,7 +102,7 @@ rule filter:
             --output-sequences {output.sequences} \
             --output-metadata {output.metadata} \
             {params.group_by} \
-            {params.sequences_per_group} \
+            {params.subsample_max_sequences} \
             {params.other_filters} \
             --output-log {output.log}
         """
