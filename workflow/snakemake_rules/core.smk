@@ -91,8 +91,8 @@ rule filter:
         log=build_dir + "/{build_name}/filter.log",
     params:
         group_by=config.get("group_by", "--group-by clade lineage"),
-        subsample_max_sequences=config["subsample_max_sequences"],
-        #sequences_per_group=config["sequences_per_group"],
+        #subsample_max_sequences=config["subsample_max_sequences"],
+        sequences_per_group=config["sequences_per_group"],
         other_filters=config.get("filters", ""),
     shell:
         """
@@ -102,7 +102,7 @@ rule filter:
             --output-sequences {output.sequences} \
             --output-metadata {output.metadata} \
             {params.group_by} \
-            {params.subsample_max_sequences} \
+            {params.sequences_per_group} \
             {params.other_filters} \
             --output-log {output.log}
         """
