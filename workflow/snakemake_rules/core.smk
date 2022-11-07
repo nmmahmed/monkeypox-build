@@ -176,7 +176,7 @@ rule mask:
             --sequences {input.sequences} \
             --mask {input.mask} \
             --mask-from-beginning {params.from_start} \
-            --mask-from-end {params.from_end} --output {output}
+            --mask-from-end {params.from_end} --output {output} \
         """
 
 
