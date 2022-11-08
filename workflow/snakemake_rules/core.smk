@@ -93,6 +93,7 @@ rule filter:
         group_by=config.get("group_by", "--group-by clade lineage"),
         #subsample_max_sequences=config["subsample_max_sequences"],
         sequences_per_group=config["sequences_per_group"],
+	subsample_seed=config["subsample_seed"],
         other_filters=config.get("filters", ""),
     shell:
         """
@@ -104,6 +105,7 @@ rule filter:
             {params.group_by} \
             {params.sequences_per_group} \
             {params.other_filters} \
+	    {params.subsample_seed} \
             --output-log {output.log}
         """
 
